@@ -37,19 +37,65 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
+Full Adder
+![Screenshot 2024-12-07 215748](https://github.com/user-attachments/assets/9e3a17bb-3854-4def-800b-b89154fa38d4)
+
+Full Subtractor
+![Screenshot 2024-12-07 215757](https://github.com/user-attachments/assets/62dbb03b-64fe-4024-bd72-1901fa24b9e0)
 
 **Procedure**
+1.Type the program in Quartus software.
 
-Write the detailed procedure here
+2.Compile and run the program.
+
+3.Generate the RTL schematic and save the logic diagram.
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+5.For different input combinations generate the timing diagram.
+
 
 **Program:**
+Full Adder
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+module fadd(a,b,c,sum,carry);
+input a,b,c;
+output sum,carry;
+wire w1,w2,w3;
+assign sum=a^b^c;
+assign w1=a&b;
+assign w2=b&c;
+assign w3=c&a;
+assign carry=w1|w2|w3;
+endmodule 
+Full Subtractor
+
+module fsub(a, b, bin, diff, borrow);
+input a, b, bin;
+output diff, borrow;
+wire w1, w2, w3, w4;
+xor g1(diff, a, b, bin);
+not g2(w1, a);          
+and g3(w2, w1, bin);    
+and g4(w3, w1, b);     
+and g5(w4, b, bin);     
+or g6(borrow, w2, w3, w4); 
+endmodule
+Developed by:Ravivarman vv
+RegisterNumber:24006127
+
 
 **RTL Schematic**
+Full Adder
+![Screenshot 2024-12-07 220117](https://github.com/user-attachments/assets/7294cb34-9f6e-47b4-a3b2-7690fc672b79)
+Full Subtractor
+![Screenshot 2024-12-07 220128](https://github.com/user-attachments/assets/39e89def-db08-43f7-84b1-cf0529da7b01)
 
 **Output Timing Waveform**
+Full Adder
+![Screenshot 2024-12-07 220146](https://github.com/user-attachments/assets/05710c08-3717-4532-9e4a-ab4f10df0442)
+Full Subtractor
+![Screenshot 2024-12-07 220155](https://github.com/user-attachments/assets/eef5fb39-292f-4f6a-90ce-cbdc24abe7da)
 
 **Result:**
 
